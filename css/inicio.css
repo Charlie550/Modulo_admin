@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css?family=Damion|Muli:400,600');
+html,body{
+  font-family: 'Muli', sans-serif;
+  height:100%;
+  margin:0;
+  display: flex;
+  flex-direction: column;
+  background-color: #a1a1a1;
+}
+
+
+#banner{
+  border-radius: 10px 10px 0px 0px;
+  background-color: #636363;
+  width: 81%;
+  height: 80px;
+  margin: 5px 0px 10px 15.5em;
+}
+
+#toolBox{
+  text-align: right;
+  margin: 5px 0px 0px 10px;
+  width: 98%;
+  color:white;
+}
+
+
+#barraTitulo{
+  font-size: 20px;
+  box-sizing: border-box;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 5px 5px 0px 0px;
+  width: 100%;
+  height: 40px;
+  background-color: #63b4ff;
+  padding: 8px 0px 0px 20px;
+}
+
+#filtro{
+  border-radius: 5px;
+  width: 98%;
+  height: 180px;
+  background-color: white;
+  margin: 1em 0px 0px 1em;
+}
+
+#filtroCont{
+  width: 100%;
+  height: 140px;
+  box-sizing: border-box;
+  padding: 20px 40px;
+}
+
+#separador{
+  width: 30px;
+}
+#tableFiltros{
+  float: left;
+}
+#tableFiltros tr{
+  height: 50px;
+}
+
+
+#desktop{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 0px 0px 10px 10px;
+  background-color: #e0e0e0;
+  width: 81%;
+  height: 84%;
+  margin: 0px 0px 0px 15.5em;
+  box-shadow: 5px 5px 5px #575757;
+}
+
+
+#contenido{
+  border-radius: 5px;
+  width: 98%;
+  background-color: white;
+  margin: 1em 0px 2em 1em;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+
+
+/*------------------ DISEÑO DE TABLA -------------------*/
+#contenido table {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  width:100%;
+}
+
+#contenido thead {
+  background: SteelBlue;
+  color: white;
+}
+
+#contenido th, #contenido td {
+  padding: 5px 10px;
+  height: 30px;
+  text-align: center;
+}
+
+#contenido tbody tr:nth-child(even) {
+  background: WhiteSmoke;
+}
+#contenido tbody tr{
+  background: #d3e1ed;
+}
+#contenido a:hover{
+  color:red;
+}
+#edit{
+  width: 100px;
+}
+
+
+/*------------------------------------------------------*/
+
+
+/*-------------------INPUT TEXT ANIMADO --------------------*/
+/* necessary to give position: relative to parent. */
+
+
+.col-3{width: 100%; position: relative;} /* necessary to give position: relative to parent. */
+input[type='text']{font: 15px/24px 'Lato', Arial, sans-serif; color: #333; width: 100%; box-sizing: border-box; letter-spacing: 0.5px;}
+
+.effect-20{border-radius: 5px; border: 1px solid #ccc; padding: 4px 14px; transition: 0.4s; background: transparent;}
+
+.effect-20 ~ .focus-border:before,
+.effect-20 ~ .focus-border:after{content: ''; position: absolute; top: 0; left: 0; width: 0; height: 2px; background-color: #4485b8; transition: 0.3s;}
+.effect-20 ~ .focus-border:after{top: auto; bottom: 0; left: auto; right: 0;}
+.effect-20 ~ .focus-border i:before,
+.effect-20 ~ .focus-border i:after{content: ''; position: absolute; top: 0; left: 0; width: 2px; height: 0; background-color: #4485b8; transition: 0.4s;}
+.effect-20 ~ .focus-border i:after{left: auto; right: 0; top: auto; bottom: 0;}
+.effect-20:focus ~ .focus-border:before,
+.effect-20:focus ~ .focus-border:after,
+.has-content.effect-20 ~ .focus-border:before,
+.has-content.effect-20 ~ .focus-border:after{width: 100%; transition: 0.3s;}
+.effect-20:focus ~ .focus-border i:before,
+.effect-20:focus ~ .focus-border i:after,
+.has-content.effect-20 ~ .focus-border i:before,
+.has-content.effect-20 ~ .focus-border i:after{height: 100%; transition: 0.4s;}
+
+/*----------------------------------------------------------*/
+
+
+/*----------- PERSONALIZAR LA BARRA DE DESPLAZAMIENTO -------------*/
+#desktop::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+#desktop::-webkit-scrollbar:vertical {
+    width:10px;
+}
+#desktop::-webkit-scrollbar-button:increment,#desktop::-webkit-scrollbar-button {
+    display: none;
+}
+#desktop::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+#desktop::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+#desktop::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/*-------------------------------------------------------------*/
+
+
+/*--------------------- BOTONES PERSONALIZADOS ----------------------*/
+
+
+.container .skewBtn {
+width: 100px;
+height: 40px;
+outline: none;
+cursor: pointer;
+background: #3b3b3b;
+transition: .5s;
+font-size: 20px;
+border: none;
+border-radius: 5px;
+font-family: 'Lato',sans-serif;
+}
+.container .skewBtn:hover {
+border: none;
+color: white;
+font-size: 22px;
+-webkit-transform: scale(1.1);
+      transform: scale(1.1);
+}
+
+/* Buttons */
+
+.blue {
+color: white;
+
+}
+.blue:hover {
+background-color: #1976D2;
+transition: all 0.3s ease-in-out;
+}
+
+.lorange {
+border: 2px solid #FBC02D;
+color: #FBC02D;
+}
+.lorange:hover {
+background-color: #FBC02D;
+transition: all 0.3s ease-in-out;
+}
+
+.brick {
+border: 2px solid #FF5722;
+color: #FF5722;
+}
+.brick:hover {
+background-color: #FF5722;
+transition: all 0.3s ease-in-out;
+}
+/*-------------------------------------------------------------*/

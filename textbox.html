@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang='es' dir='ltr'>
+  <head>
+    <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <style media='screen'>
+
+    .container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 97vh;
+}
+.container .skewBtn {
+  width: 100px;
+  height: 40px;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  transition: .5s;
+  font-size: 20px;
+  border-radius: 5px;
+  font-family: 'Lato',sans-serif;
+}
+.container .skewBtn:hover {
+  border: none;
+  color: white;
+  font-size: 25px;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+/* Buttons */
+
+.blue {
+  border: 2px solid #1976D2;
+  color: #1976D2;
+}
+.blue:hover {
+  background-color: #1976D2;
+  transition: all 0.3s ease-in-out;
+}
+
+.lorange {
+  border: 2px solid #FBC02D;
+  color: #FBC02D;
+}
+.lorange:hover {
+  background-color: #FBC02D;
+  transition: all 0.3s ease-in-out;
+}
+
+.brick {
+  border: 2px solid #FF5722;
+  color: #FF5722;
+}
+.brick:hover {
+  background-color: #FF5722;
+  transition: all 0.3s ease-in-out;
+}
+
+    </style>
+
+  </head>
+  <body>
+
+    <div class='container'>
+      <button class='skewBtn purple'>Hello!</button>
+      <button class='skewBtn blue'>Hello!</button>
+      <button class='skewBtn lorange'>Hello!</button>
+      <button class='skewBtn brick'>Hello!</button>
+    </div>
+
+  </body>
+</html>
