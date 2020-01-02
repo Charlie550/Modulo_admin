@@ -13,7 +13,11 @@
 
 		if($db->validar_usr($_POST['username'],$_POST['pass'])){
 
-			crear_sesion($_POST['username'],$_POST['pass']);
+			$id=$db->getID($_POST['username'],$_POST['pass']);
+			$nivel=$db->getNivel($id);
+			crear_sesion($_POST['username'],$_POST['pass'],$nivel);
+			$_SESSION['id']=$id;
+
 			header("Location: inicio.php");
 		}else
 
