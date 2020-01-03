@@ -154,12 +154,11 @@
 
               <div id='contenido'>
 
-              <a class='botonModal' href='#registrarUsuario' style='float:right;'>+</a><br><br><br>
+              <a class='botonModal' href='#registrarNivel' style='float:right;'>+</a><br><br><br>
 
               <table>
                 <thead>
                   <tr>
-                    <th>Usuario</th>
                     <th>Nivel</th>
                     <th>Descripcion</th>
                     <th>Creado por usuario</th>
@@ -170,15 +169,14 @@
 
                   ";
 
-                    $rows=$db->getUsuarios();
+                    $rows=$db->getNiveles();
                     foreach($rows as $row){
 
                       echo"
                       <tr>
-                        <td>".$row['usr_nombre']."</td>
-                        <td>".$row['usr_nivel_ID']."</td>
-                        <td>".$db->getNivelDescripcion($row['usr_nivel_ID'])."</td>
-                        <td>".$db->getUsuarioName($row['usr_usuarioIdCreo'])."</td>
+                        <td>".$row['niveles_nivel']."</td>
+                        <td>".$row['niveles_descripcion']."</td>
+                        <td>".$db->getUsuarioName($row['niveles_usrIdCreo'])."</td>
                         <td id='edit'><a style='cursor:pointer; width:50px; height:50px;'><i class='ion-edit'> Editar</a></i></td>
                         <td id='edit'><a style='cursor:pointer; width:50px; height:50px;'><i class='ion-trash-a'> Eliminar</a></i></td>
                       </tr>
@@ -193,8 +191,8 @@
 
             </div>
 
-            ";require "ModalsRegistrar.php";"
 
+            ";require "ModalsRegistrar.php";"
         </body>
       </html>
       ";

@@ -15,8 +15,8 @@
 
 	class BaseDatos
 	{
-	    protected $conexion;
-	    protected $db;
+	    public $conexion;
+	    public $db;
 
 
 	    public function conectar(){
@@ -66,6 +66,30 @@
 
 					return $result['usr_nivel'];
 			}
+
+			public function getUsuarios(){
+
+				$this->conectar();
+				$query="SELECT * FROM `usuarios` WHERE 1";
+				$result=mysqli_query($this->conexion,$query);
+
+				while($rows=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+					$row[]=$rows;
+				}
+
+				$this->desconectar();
+
+				return $row;
+			}
+
+			public function getUsuarioName($usuarioID){
+				$this->conectar();
+				$query="SELECT usr_nombre FROM `usuarios` WHERE usr_ID='".$usuarioID."'";
+				$result=mysqli_fetch_assoc(mysqli_query($this->conexion,$query));
+				$this->desconectar();
+
+				return $result['usr_nombre'];
+			}
 			//-----------------------------------------------------------------------
 
 
@@ -74,11 +98,35 @@
 			public function getNivelesLista($usuarioID){
 
 					$this->conectar();
-					$query="SELECT niveles_lista FROM `tbl_niveles` WHERE niveles_usuarioID='".$usuarioID."'";
+					$query="SELECT niveles_lista FROM `tbl_niveles` WHERE nivelesID='".$usuarioID."'";
 					$result=mysqli_fetch_assoc(mysqli_query($this->conexion,$query));
 					$this->desconectar();
 
 					return $result['niveles_lista'];
+			}
+
+			public function getNiveles(){
+				$this->conectar();
+				$query="SELECT * FROM `tbl_niveles` WHERE 1";
+				$result=mysqli_query($this->conexion,$query);
+
+				while($rows=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+					$row[]=$rows;
+				}
+
+				$this->desconectar();
+
+				return $row;
+			}
+
+			public function getNivelDescripcion($nivel){
+
+				$this->conectar();
+				$query="SELECT niveles_descripcion FROM `tbl_niveles` WHERE niveles_nivel='".$nivel."'";
+				$result=mysqli_fetch_assoc(mysqli_query($this->conexion,$query));
+				$this->desconectar();
+
+				return $result['niveles_descripcion'];
 			}
 
 			//-----------------------------------------------------------------------
@@ -112,6 +160,24 @@
 
 				return $result;
 			}
+
+
+			public function getAllFromMenu(){
+
+				$this->conectar();
+				$query="SELECT * FROM `tbl_menus` WHERE 1";
+				$result=mysqli_query($this->conexion,$query);
+
+				while($rows=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+					$row[]=$rows;
+				}
+
+				$this->desconectar();
+
+				return $row;
+			}
+			
+
 			//-----------------------------------------------------------------------
 
 	}
