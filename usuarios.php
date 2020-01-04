@@ -1,5 +1,4 @@
 <?php
-//cadena registrar usuario: INSERT INTO `usuarios` (`usr_ID`, `usr_nombre`, `usr_clave`, `usr_usuarioCreo`, `usr_fechaCreo`, `usr_nivel`) VALUES (NULL, 'admin', SHA1('admin'), 'admin', CURRENT_DATE(), '1');
 
   session_start();
 
@@ -43,6 +42,7 @@
           <script src='js/sweetalert2.all.min.js'></script>
           <script src='https://cdn.jsdelivr.net/npm/promise-polyfill'></script>
 
+          <script src='js/enviosAjax.js'></script>
           <link rel='stylesheet' href='css/inicio.css'>
 
           <script>
@@ -232,4 +232,5 @@
     ";
 
   }
+
 ?>

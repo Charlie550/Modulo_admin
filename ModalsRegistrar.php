@@ -4,7 +4,7 @@
 echo"
 <div id='registrarUsuario' class='modal'>
 
-      <form method='post'>
+      <form name='registroUsuario' action='' onSubmit='registrarUsuario(); return false'>
 
       <div id='filtro' style='width:60%; height:280px; margin:10% auto;'>
         <div id='barraTitulo' style='height:50px;'><i class='ion-person-add'></i>&nbsp;&nbsp;Agregar usuario<a class='closeModal' href='#'>X</a></div>
@@ -49,7 +49,7 @@ echo"
 
 
 
-//MODAL REGISTRAR NIVEL DESDE REGISTRAR USUARIO
+//MODAL REGISTRAR NIVEL
 echo"
 <div id='registrarNivel' class='modal'>
 

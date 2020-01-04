@@ -6,7 +6,7 @@
   $id=$_SESSION['id'];
 
   $arrayMenu=array();
-  $arrayMenu=explode('-',$db->getNivelesLista($id));
+  $arrayMenu=explode('-',$db->getNivelesLista($db->getNivel($id)));
 
 
   function printMENU(){

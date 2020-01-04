@@ -60,11 +60,11 @@
 			public function getNivel($id){
 
 					$this->conectar();
-					$query="SELECT usr_nivel FROM `usuarios` WHERE usr_ID='".$id."'";
+					$query="SELECT usr_nivel_ID FROM `usuarios` WHERE usr_ID='".$id."'";
 					$result=mysqli_fetch_assoc(mysqli_query($this->conexion,$query));
 					$this->desconectar();
 
-					return $result['usr_nivel'];
+					return $result['usr_nivel_ID'];
 			}
 
 			public function getUsuarios(){
@@ -89,6 +89,16 @@
 				$this->desconectar();
 
 				return $result['usr_nombre'];
+			}
+
+			public function registrarUsuario($usr_nombre,$usr_clave,$usrIDcreo,$nivelID){
+				$this->conectar();
+				$query="INSERT INTO `usuarios` (`usr_ID`, `usr_nombre`, `usr_clave`,
+					 `usr_usuarioIdCreo`, `usr_fechaCreo`, `usr_nivel_ID`, `usr_status`)
+					  VALUES (NULL, '".$usr_nombre."', SHA1('".$usr_clave."'), '".$usrIDcreo."', CURRENT_DATE(),'".$nivelID."', '1');";
+
+				$result=mysqli_query($this->conexion,$query);
+				$this->desconectar();
 			}
 			//-----------------------------------------------------------------------
 
@@ -176,7 +186,7 @@
 
 				return $row;
 			}
-			
+
 
 			//-----------------------------------------------------------------------
 
