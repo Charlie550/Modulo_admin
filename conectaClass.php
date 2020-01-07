@@ -105,7 +105,7 @@
 
 			//------------------------ CONSULTAS NIVELES ----------------------------
 
-			public function getNivelesLista($usuarioID){
+			public function getNivelesLista($usuarioID){//todos los menus y submenus a los que tiene acceso el usuario
 
 					$this->conectar();
 					$query="SELECT niveles_lista FROM `tbl_niveles` WHERE nivelesID='".$usuarioID."'";
@@ -115,7 +115,7 @@
 					return $result['niveles_lista'];
 			}
 
-			public function getNiveles(){
+			public function getNiveles(){//todo el contenido de la tabla niveles
 				$this->conectar();
 				$query="SELECT * FROM `tbl_niveles` WHERE 1";
 				$result=mysqli_query($this->conexion,$query);
@@ -129,20 +129,42 @@
 				return $row;
 			}
 
-			public function getNivelDescripcion($nivel){
+
+			public function getNivelDescripcion($nivelID){//la descripcion del nivel determinado
 
 				$this->conectar();
-				$query="SELECT niveles_descripcion FROM `tbl_niveles` WHERE niveles_nivel='".$nivel."'";
+				$query="SELECT niveles_descripcion FROM `tbl_niveles` WHERE nivelesID='".$nivelID."'";
 				$result=mysqli_fetch_assoc(mysqli_query($this->conexion,$query));
 				$this->desconectar();
 
 				return $result['niveles_descripcion'];
 			}
 
+			public function getNivelesNivel($nivelID){//el identificador de un nivel determinado
+
+				$this->conectar();
+				$query="SELECT niveles_nivel FROM `tbl_niveles` WHERE nivelesID='".$nivelID."'";
+				$result=mysqli_fetch_assoc(mysqli_query($this->conexion,$query));
+				$this->desconectar();
+
+				return $result['niveles_nivel'];
+			}
+
+			public function registrarNivel($nivel,$lista,$descripcion,$usrIDcreo){
+				$this->conectar();
+				$query="INSERT INTO `tbl_niveles` (`nivelesID`, `niveles_nivel`, `niveles_lista`,
+					`niveles_descripcion`, `niveles_usrIdCreo`) VALUES (NULL, '".$nivel."', '".$lista."',
+						'".$descripcion."', '".$usrIDcreo."');";
+
+				$result=mysqli_query($this->conexion,$query);
+				$this->desconectar();
+			}
+
+
 			//-----------------------------------------------------------------------
 
 			//------------------------ CONSULTAS MENUS ----------------------------
-			public function getMenus($menuID){
+			public function getMenus($menuID){//todo un registro que sea menu padre al que tenga acceso un usuario
 
 					$this->conectar();
 					$query="SELECT * FROM `tbl_menus` WHERE menuID='".$menuID."' AND menu_padre='menu'";
@@ -152,7 +174,31 @@
 					return $result;
 			}
 
-			public function verificarSubMenus($menuID){
+			public function getAllMenusPadre(){//todos los menu padre que hay en la tabla
+
+				$this->conectar();
+				$query="SELECT * FROM `tbl_menus` WHERE menu_padre='menu'";
+				$result=mysqli_query($this->conexion,$query);
+
+				while($rows=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+					$row[]=$rows;
+				}
+
+				$this->desconectar();
+
+				return $row;
+			}
+
+			public function getFilaMenu($menuID){//todo lo de un menu determinado
+				$this->conectar();
+				$query="SELECT * FROM `tbl_menus` WHERE menuID='".$menuID."'";
+				$result=mysqli_fetch_assoc(mysqli_query($this->conexion,$query));
+				$this->desconectar();
+
+				return $result;
+			}
+
+			public function verificarSubMenus($menuID){//cuenta los submenus asociados a un menu determinado
 				$this->conectar();
 	    	$query="SELECT COUNT(menuID) AS men FROM `tbl_menus` WHERE menu_padre='".$menuID."'";
 				$result=mysqli_fetch_assoc(mysqli_query($this->conexion,$query));
@@ -161,7 +207,7 @@
 	    	return $result['men'];
 			}
 
-			public function getSubMenus($menuID,$menuPadre){
+			public function getSubMenus($menuID,$menuPadre){//todo del registro de los menus asociados a otro menu (submenus) a los que tenga acceso un usuario
 
 				$this->conectar();
 				$query="SELECT * FROM `tbl_menus` WHERE menuID='".$menuID."' AND menu_padre='".$menuPadre."'";
@@ -171,8 +217,22 @@
 				return $result;
 			}
 
+			public function getAllSubmenusFromMenu($menuPadre){//todos los submenus de un determinado menu
+				$this->conectar();
+				$query="SELECT * FROM `tbl_menus` WHERE menu_padre='".$menuPadre."'";
+				$result=mysqli_query($this->conexion,$query);
 
-			public function getAllFromMenu(){
+				while($rows=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+					$row[]=$rows;
+				}
+
+				$this->desconectar();
+
+				return $row;
+			}
+
+
+			public function getAllFromMenu(){//todo el contenido de la tabla menu
 
 				$this->conectar();
 				$query="SELECT * FROM `tbl_menus` WHERE 1";

@@ -176,7 +176,7 @@
                       echo"
                       <tr>
                         <td>".$row['usr_nombre']."</td>
-                        <td>".$row['usr_nivel_ID']."</td>
+                        <td>".$db->getNivelesNivel($row['usr_nivel_ID'])."</td>
                         <td>".$db->getNivelDescripcion($row['usr_nivel_ID'])."</td>
                         <td>".$db->getUsuarioName($row['usr_usuarioIdCreo'])."</td>
                         <td id='edit'><a style='cursor:pointer; width:50px; height:50px;'><i class='ion-edit'> Editar</a></i></td>

@@ -53,7 +53,7 @@ echo"
 echo"
 <div id='registrarNivel' class='modal'>
 
-      <form method='post'>
+      <form name='registroNivel' action='' onSubmit='registrarNivel(); return false'>
 
       <div id='filtro' style='width:60%; height:550px; margin:3% auto;'>
         <div id='barraTitulo' style='height:50px;'><i class='ion-android-add-circle'></i>&nbsp;&nbsp;Agregar Nivel
@@ -100,33 +100,37 @@ echo"
         <tbody>
         ";
 
-        $rowsMenus=$db->getAllFromMenu();
-        foreach($rowsMenus as $rowM){
+        foreach($db->getAllMenusPadre() as $rowM){
+
           echo"
-          <tr>
+            <tr>
+            <td style='width:60%;text-align:left;'>
+            ".$rowM['menu_descripcion']."</td><td></td></tr>
           ";
-            if($rowM['menu_padre']!="menu"){
-              echo"<td style='width:60%;text-align:left;'>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              ".$rowM['menu_descripcion']."</td>";
-            }else{
+          if($db->verificarSubMenus($rowM['menuID'])>=1){
+
+            foreach($db->getAllSubmenusFromMenu($rowM['menuID']) as $rowSM){
 
               echo"
-              <td style='width:60%;text-align:left;'>".$rowM['menu_descripcion']."</td>";}
-
-              if($rowM['menu_ruta']!="submenu"){
-                echo"
+                <tr>
+                <td style='width:60%;text-align:left;'>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ".$rowSM['menu_descripcion']."</td>
                 <td>
-                  <input type='checkbox' name='".$rowM['menu_descripcion']."' value='".$rowM['menuID']."'>
+                  <input type='checkbox' name='".$rowSM['menuID']."'>
                 </td>
                 </tr>
-                ";
-              }else{echo "<td></td></tr>";}
+              ";
+            }
+
+          }
         }
 
-        echo"
+          echo"
+
         </tbody>
         </table>
+
         </div>
 
         <div class='container' style='margin-top:-20px;;'><button class='skewBtn blue'>Registrar</button></div>
