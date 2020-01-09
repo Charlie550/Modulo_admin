@@ -2,7 +2,7 @@
 	try {
 
 		session_start();
-		require "conectaClass.php";
+		require "../conectaClass.php";
 		$db = new BaseDatos();
 
 		$listaNiveles=$_POST['listaNiveles'];

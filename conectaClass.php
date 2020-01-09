@@ -100,6 +100,14 @@
 				$result=mysqli_query($this->conexion,$query);
 				$this->desconectar();
 			}
+
+			public function eliminarUsuario($usuarioID){
+
+					$this->conectar();
+					$query="DELETE FROM `usuarios` WHERE `usuarios`.`usr_ID` = ".$usuarioID."";
+					$result=mysqli_query($this->conexion,$query);
+					$this->desconectar();
+			}
 			//-----------------------------------------------------------------------
 
 

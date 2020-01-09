@@ -1,8 +1,8 @@
 <?php
 	try {
 
-		session_start();		
-		require "conectaClass.php";
+		session_start();
+		require "../conectaClass.php";
 		$db = new BaseDatos();
 
 		$nombreUsr=$_POST['nombreUsr'];
