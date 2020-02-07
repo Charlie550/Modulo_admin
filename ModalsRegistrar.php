@@ -4,10 +4,10 @@
 echo"
 <div id='registrarUsuario' class='modal'>
 
-      <form name='registroUsuario' action='' onSubmit='registrarUsuario(); return false'>
+      <form id='formRegisUsr' name='registroUsuario' action='' onSubmit='registrarUsuario(); return false'>
 
       <div id='filtro' style='width:60%; height:280px; margin:10% auto;'>
-        <div id='barraTitulo' style='height:50px;'><i class='ion-person-add'></i>&nbsp;&nbsp;Agregar usuario<a class='closeModal' href='#'>X</a></div>
+        <div id='barraTitulo' style='height:50px;'><i class='ion-person-add'></i>&nbsp;&nbsp;Agregar usuario<a class='closeModal' href='#' onClick='limpiarModalRegistrarUsuario()'>X</a></div>
         <div id='filtroCont'>
 
         <table id='tableFiltros' style='width:95%;'>
@@ -34,6 +34,7 @@ echo"
           </td>
 
           <td><a class='botonModal' href='#registrarNivel' style='float:left; margin-left:10px;width:30px;height:30px;font-size:20px;'>+</a></td>
+          <td id='confirmarClave'></td>
           </tr>
 
         </table>

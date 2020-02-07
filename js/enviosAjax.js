@@ -30,7 +30,7 @@ function registrarUsuario(){
     ajax = objetoAjax();
 
     //Abrimos una conexión AJAX pasando como parámetros el método de envío, y el archivo que realizará las operaciones deseadas
-    ajax.open("POST", "registrarUsuario.php", true);
+    ajax.open("POST", "consultasAjax\\registrarUsuario.php", true);
 
     //cuando el objeto XMLHttpRequest cambia de estado, la función se inicia
     ajax.onreadystatechange = function() {
@@ -78,6 +78,10 @@ function registrarNivel(){
     var array = [];
     var checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
 
+    if(checkboxes.length==0){
+
+    }
+
     var listaNiveles='';
     for (var i = 0; i < checkboxes.length; i++) {
       listaNiveles+=checkboxes[i].name+'-';
@@ -90,7 +94,7 @@ function registrarNivel(){
     ajax = objetoAjax();
 
     //Abrimos una conexión AJAX pasando como parámetros el método de envío, y el archivo que realizará las operaciones deseadas
-    ajax.open("POST", "registrarNivel.php", true);
+    ajax.open("POST", "consultasAjax\\registrarNivel.php", true);
 
     //cuando el objeto XMLHttpRequest cambia de estado, la función se inicia
     ajax.onreadystatechange = function() {
@@ -107,7 +111,7 @@ function registrarNivel(){
         	});
 
           var pathname = window.location.pathname.split('/');
-          pathnameFile = pathname[pathname.length-1];          
+          pathnameFile = pathname[pathname.length-1];
 
           if(pathnameFile=="usuarios.php"){
             setTimeout ("window.location='usuarios.php#registrarUsuario'", 1000);
@@ -131,4 +135,80 @@ function registrarNivel(){
     //enviamos las variables a 'consulta.php'
     ajax.send("&nombreNivel="+nombreNivel+"&descripcionNivel="+descripcionNivel+"&listaNiveles="+listaNiveles);
 
+}
+
+
+
+
+
+
+
+function eliminarUsuario(usuarioID){
+  Swal.fire({
+    icon: 'warning',
+    title: '¿Seguro que desea eliminar este registro?',
+    text: 'Confirmar eliminación de registro',
+    showCancelButton: true,
+    }).then((result) => {
+      if (result.value) {
+
+        ajax = objetoAjax();
+        ajax.open('POST', 'consultasAjax\\eliminarUsuario.php', true);
+        ajax.onreadystatechange = function() {
+
+          if (ajax.readyState == 4){
+
+            if(ajax.responseText=='correcto'){
+              Swal.fire({
+                icon: 'success',
+                title: 'Registro eliminado',
+                text: 'Se ha eliminado correctamente el registro',
+              });
+
+              setTimeout ("window.location='usuarios.php'", 1000);
+
+            }else{
+              Swal.fire({
+                icon: 'error',
+                title: 'Ha ocurrido un error',
+                text: ajax.responseText,
+              });
+            }
+          }
+        }
+
+        ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        ajax.send('&usuarioID='+usuarioID);
+
+      }
+    })
+}
+
+function prueba(){
+  alert('hola');
+}
+
+function modificarUsuario(nombre,nivel){
+
+  formulario=document.getElementById("formRegisUsr");
+  formUsuario.innerHTML.replace('registrarUsuario','prueba');
+
+  document.registroUsuario.nombreUsuario.value=nombre;
+  document.registroUsuario.nivelUsuario.value=nivel;
+
+  contenedor = document.getElementById("confirmarClave");
+  contenedor.innerHTML ="<tr><td><input type='password' name='confirmaClave' placeholder='&nbsp;&nbsp;&nbsp;nueva contraseña'></td></tr>";
+
+  location.href="#registrarUsuario";
+
+}
+
+function limpiarModalRegistrarUsuario(){
+
+  document.registroUsuario.nombreUsuario.value="";
+  document.registroUsuario.claveUsuario.value="";
+  document.registroUsuario.nivelUsuario.value=1;
+
+  contenedor = document.getElementById("confirmarClave");
+  contenedor.innerHTML ="";
 }
