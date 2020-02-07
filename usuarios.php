@@ -17,6 +17,7 @@
       require "conectaClass.php";
       require 'menu.php';
 			$db = new BaseDatos();
+
       printHTML();
 
     }else{
@@ -47,7 +48,7 @@
           <script>
             function salir(){
               Swal.fire({
-                icon: 'question',
+                icon: 'warning',
                 title: '¿Seguro que desea salir?',
                 text: 'Confirmar cierre de sesión',
                 showCancelButton: true,
@@ -83,42 +84,65 @@
 
             <div id='desktop'>
 
-              <form id='formUsuario' method='post'>
-
               <div id='filtro'>
                 <div id='barraTitulo'><i class='ion-funnel'></i>&nbsp;&nbsp;Busqueda por filtros</div>
                 <div id='filtroCont'>
 
                 <table id='tableFiltros'>
                   <tr>
-
                     <td>Nombre:</td>
                     <td>
                       <div class='col-3 input-effect'>
-                        <input class='effect-20' name='name' type='text' placeholder='Nombre'>  <span class='focus-border'><i></i></span>
+                        <input class='effect-20' type='text' placeholder='Nombre'>  <span class='focus-border'><i></i></span>
                       </div>
                     </td>
 
                     <td id='separador'></td>
 
-                    <td>Nivel:</td>
+                    <td>Nombre:</td>
                     <td>
                       <div class='col-3 input-effect'>
-                        <input class='effect-20' name='nivel' type='text' placeholder='Nivel'>  <span class='focus-border'><i></i></span>
+                        <input class='effect-20' type='text' placeholder='Nombre'>  <span class='focus-border'><i></i></span>
+                      </div>
+                    </td>
+
+                    <td id='separador'></td>
+
+                    <td>Nombre:</td>
+                    <td>
+                      <div class='col-3 input-effect'>
+                        <input class='effect-20' type='text' placeholder='Nombre'>  <span class='focus-border'><i></i></span>
                       </div>
                     </td>
 
                   </tr>
 
                   <tr>
-                    <td>Descripción:</td>
+                    <td>Nombre:</td>
                     <td>
                       <div class='col-3 input-effect'>
-                        <input class='effect-20' name='descripcion' type='text' placeholder='Descripción'>  <span class='focus-border'><i></i></span>
+                        <input class='effect-20' type='text' placeholder='Nombre'>  <span class='focus-border'><i></i></span>
+                      </div>
+                    </td>
+
+                    <td id='separador'></td>
+
+                    <td>Nombre:</td>
+                    <td>
+                      <div class='col-3 input-effect'>
+                        <input class='effect-20' type='text' placeholder='Nombre'>  <span class='focus-border'><i></i></span>
+                      </div>
+                    </td>
+
+                    <td id='separador'></td>
+
+                    <td>Apellido <br>paterno  :</td>
+                    <td>
+                      <div class='col-3 input-effect'>
+                        <input class='effect-20' type='text' placeholder='Nombre'>  <span class='focus-border'><i></i></span>
                       </div>
                     </td>
                   </tr>
-
                 </table>
 
                 <div class='container'><button class='skewBtn blue'>Buscar</button></div>
@@ -155,8 +179,8 @@
                         <td>".$db->getNivelesNivel($row['usr_nivel_ID'])."</td>
                         <td>".$db->getNivelDescripcion($row['usr_nivel_ID'])."</td>
                         <td>".$db->getUsuarioName($row['usr_usuarioIdCreo'])."</td>
-                        <td id='edit'><a style='cursor:pointer; width:50px; height:50px;' onClick='modificarUsuario(\"".$row['usr_nombre']."\",".$row['usr_nivel_ID'].",".$row['usr_ID'].")'><i class='ion-edit'> Editar</a></i></td>
-                        <td id='edit'><a style='cursor:pointer; width:50px; height:50px;' onClick='eliminarUsuario(".$row['usr_ID'].")'><i class='ion-trash-a'> Eliminar</a></i></td>
+                        <td id='edit'><a style='cursor:pointer; width:50px; height:50px;'><i class='ion-edit'> Editar</a></i></td>
+                        <td id='edit'><a style='cursor:pointer; width:50px; height:50px;'><i class='ion-trash-a'> Eliminar</a></i></td>
                       </tr>
                       ";
                     }
@@ -167,7 +191,6 @@
                 </table>
               </div>
 
-              </form>
             </div>
 
             ";require "ModalsRegistrar.php";"

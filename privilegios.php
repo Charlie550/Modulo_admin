@@ -49,7 +49,7 @@
           <script>
             function salir(){
               Swal.fire({
-                icon: 'question',
+                icon: 'warning',
                 title: '¿Seguro que desea salir?',
                 text: 'Confirmar cierre de sesión',
                 showCancelButton: true,
